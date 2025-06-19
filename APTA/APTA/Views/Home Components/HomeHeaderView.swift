@@ -68,7 +68,7 @@ struct HomeHeaderView: View {
                             .foregroundColor(.white)
 
                         Text(date.string("dd"))
-                            .font(.title3)
+                            .font(.callout)
                             .foregroundStyle(isSameDate ? .black : .white)
                             .frame(width: 38, height: 38)
                             .background {

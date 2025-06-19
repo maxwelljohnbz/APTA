@@ -22,7 +22,7 @@ struct FloatingTabBar: View {
         ZStack {
             Capsule()
                 .frame(height: 70)
-                .foregroundStyle(Color(.secondarySystemBackground))
+                .foregroundStyle(Color(.backgroundColor1))
                 .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 4)
 
             HStack {
@@ -35,7 +35,7 @@ struct FloatingTabBar: View {
                         VStack(spacing: 4) {
                             Image(systemName: tabBarItems[index].icon)
                                 .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(index == tabSelection ? Color.blue : Color.gray)
+                                .foregroundStyle(index == tabSelection ? Color.blue : Color.white)
 
                             Text(tabBarItems[index].label)
                                 .font(.caption2)
