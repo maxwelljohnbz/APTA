@@ -15,35 +15,28 @@ struct HomeView: View {
     @State private var isExpanded: Bool = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            HomeHeaderView(
-                currentWeek: currentWeek,
-                selectedDate: selectedDate,
-                namespace: namespace,
-                onDateChange: { date in selectedDate = date }
-            )
-            .environment(\.colorScheme, .dark)
-            .padding(.top, 60) // Moves header down from Dynamic Island
-            .padding(.bottom, 10)
+        ZStack(alignment: .top) {
+            // Static header view
+            VStack(spacing: 0) {
+                HomeHeaderView(
+                    username: "Maxwell",
+                    currentWeek: currentWeek,
+                    selectedDate: selectedDate,
+                    namespace: namespace,
+                    onDateChange: { date in selectedDate = date }
+                )
+                .environment(\.colorScheme, .dark)
+                .padding(.top, 60)
+                .padding(.bottom, 10)
 
-            GeometryReader { geo in
-                VStack {
-                    Spacer()
-                }
-                .frame(width: geo.size.width, height: geo.size.height)
-                .background(.background)
-                .clipShape(UnevenRoundedRectangle(
-                    topLeadingRadius: 30,
-                    bottomLeadingRadius: 0,
-                    bottomTrailingRadius: 0,
-                    topTrailingRadius: 30,
-                    style: .continuous
-                ))
-                .environment(\.colorScheme, .light)
-                .ignoresSafeArea(.all, edges: .bottom)
+                Spacer()
             }
+            .background(Color(.backgroundColor1))
+            .ignoresSafeArea()
+
+            // Sliding white content panel (as component)
+            HomeContentSheet(isExpanded: $isExpanded, offset: $offset)
         }
-        .background(Color(.backgroundColor1))
         .onAppear {
             guard selectedDate == nil else { return }
             selectedDate = currentWeek.first(where: { $0.isSame(.now) })
