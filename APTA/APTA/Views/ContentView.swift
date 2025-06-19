@@ -22,7 +22,6 @@ struct ContentView: View {
                     default: HomeView()
                     }
                 }
-                
                 //.padding(.bottom, 80) // push content up above tab bar
                 .ignoresSafeArea(edges: .top) // only ignore top safe area
                 

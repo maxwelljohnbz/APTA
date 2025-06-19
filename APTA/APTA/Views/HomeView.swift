@@ -8,22 +8,46 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var currentWeek: [Date] = Date.currentWeek
+    @State private var selectedDate: Date?
+    @Namespace private var namespace
+    @State private var offset: CGFloat = 0
+    @State private var isExpanded: Bool = false
+
     var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 16) {
-                // Header with safe top padding for notch/Dynamic Island
-                HomeHeaderView(username: "Max & William")
-                    .safeAreaInset(edge: .top, spacing: 20) {
-                        Color.clear.frame(height: 44)
-                    }
+        VStack(spacing: 0) {
+            HomeHeaderView(
+                currentWeek: currentWeek,
+                selectedDate: selectedDate,
+                namespace: namespace,
+                onDateChange: { date in selectedDate = date }
+            )
+            .environment(\.colorScheme, .dark)
+            .padding(.top, 60) // Moves header down from Dynamic Island
+            .padding(.bottom, 10)
 
-
-
-                Spacer(minLength: 100) // Push content away from floating tab
+            GeometryReader { geo in
+                VStack {
+                    Spacer()
+                }
+                .frame(width: geo.size.width, height: geo.size.height)
+                .background(.background)
+                .clipShape(UnevenRoundedRectangle(
+                    topLeadingRadius: 30,
+                    bottomLeadingRadius: 0,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: 30,
+                    style: .continuous
+                ))
+                .environment(\.colorScheme, .light)
+                .ignoresSafeArea(.all, edges: .bottom)
             }
         }
-        .background(Color.white)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.backgroundColor1))
+        .onAppear {
+            guard selectedDate == nil else { return }
+            selectedDate = currentWeek.first(where: { $0.isSame(.now) })
+        }
     }
 }
 
