@@ -26,15 +26,18 @@ struct NutritionHeaderView: View {
                     Button(action: {
                         // Date action
                     }) {
-                        HStack(spacing: 6) {
+                        HStack() {
                             Image(systemName: "calendar")
-                            Text("Today")
+                            Text(currentFormattedDate)
                         }
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 12)
+                        .padding(.vertical, 14)
+                        .padding(.horizontal, 10)
+                        .frame(width: 250, alignment: .leading)
                         .background(Color.white.opacity(0.1))
                         .foregroundColor(.white)
                         .clipShape(Capsule())
+                        
+                        Spacer()
                     }
 
                     Spacer()
@@ -45,7 +48,7 @@ struct NutritionHeaderView: View {
                         }) {
                             Image(systemName: "pencil")
                                 .font(.system(size: 16, weight: .medium))
-                                .frame(width: 24, height: 24)
+                                .frame(width: 30, height: 30)
                                 .padding(8)
                                 .background(Color.white.opacity(0.1))
                                 .clipShape(Circle())
@@ -58,7 +61,7 @@ struct NutritionHeaderView: View {
                             Image(systemName: "ellipsis")
                                 .rotationEffect(.degrees(90))
                                 .font(.system(size: 16, weight: .medium))
-                                .frame(width: 24, height: 24)
+                                .frame(width: 30, height: 30)
                                 .padding(8)
                                 .background(Color.white.opacity(0.1))
                                 .clipShape(Circle())
@@ -69,7 +72,12 @@ struct NutritionHeaderView: View {
                 .padding(.horizontal)
             }
         }
+    private var currentFormattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d"
+        return formatter.string(from: Date())
     }
+}
 
     #Preview {
         NutritionHeaderView()

@@ -11,7 +11,7 @@ struct NutritionContentView: View {
     @Binding var isExpanded: Bool
     @Binding var offset: CGFloat
 
-    let collapsedOffset: CGFloat = 190
+    let collapsedOffset: CGFloat = 197
     let expandedOffset: CGFloat = 130
 
     @State private var lastScrollOffset: CGFloat = 0
@@ -61,13 +61,11 @@ struct NutritionContentView: View {
                             .padding(.top, 8)
 
                         // Summary content
-                        NutritionSummaryCard(
-                            calories: 1500,
-                            calorieGoal: 2000,
-                            protein: 125,
-                            carbs: 220,
-                            fats: 45
-                        )
+                        HStack(alignment: .top, spacing: 12) {
+                            NutritionSummaryCard(calories: 1500, calorieGoal: 2000)
+
+                            MacroSummaryStack(protein: 125, carbs: 220, fats: 45)
+                        }
                         .padding(.horizontal, 15)
 
                         // Placeholder additional content
