@@ -28,11 +28,14 @@ struct MealSelectionView: View {
                                 Color(.systemGray6) :
                                 Color(.backgroundColor1)
                             )
-                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                            .shadow(radius: 3)
                     }
                 }
             }
             .padding(.horizontal)
+            .padding(.top, 4)
+            .padding(.bottom, 4)
         }
     }
 }

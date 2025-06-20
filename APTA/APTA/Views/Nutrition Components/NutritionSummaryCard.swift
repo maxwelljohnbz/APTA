@@ -49,6 +49,7 @@ struct NutritionSummaryCard: View {
         .frame(width: 215, height: 220)
         .background(Color(.systemGray6))
         .cornerRadius(24)
+        .shadow(radius: 5)
     }
 }
 

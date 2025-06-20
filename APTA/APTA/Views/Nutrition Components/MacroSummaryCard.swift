@@ -42,6 +42,7 @@ struct MacroSummaryCard: View {
         .background(Color(.backgroundColor1))
         .cornerRadius(16)
         .padding(.horizontal, 2)
+        .shadow(radius: 5)
     }
 }
 

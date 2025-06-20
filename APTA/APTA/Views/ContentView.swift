@@ -16,8 +16,7 @@ struct ContentView: View {
                     switch tabSelection {
                     case 0: HomeView()
                     case 1: NutritionView()
-                    case 2: DiscoverView()
-                    case 3: CommunityView()
+                    case 2: CommunityView()
                     case 4: ChallengesView()
                     default: HomeView()
                     }

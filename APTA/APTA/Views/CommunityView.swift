@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct CommunityView: View {
+    @Namespace private var namespace
+    @State private var offset: CGFloat = 0
+    @State private var isExpanded: Bool = false
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .top) {
+            // Static header view
+            VStack(spacing: 0) {
+                CommunityHeaderView()
+                    .environment(\.colorScheme, .dark)
+                    .padding(.top, 15)
+                    .padding(.bottom, 10)
+
+               Spacer()
+            }
+            .background(Color(.backgroundColor1))
+            .ignoresSafeArea()
+
+            CommunityContentView(isExpanded: $isExpanded, offset: $offset)
+        }
     }
 }
 
