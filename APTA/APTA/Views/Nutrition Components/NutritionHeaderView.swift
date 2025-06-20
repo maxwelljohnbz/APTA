@@ -46,7 +46,7 @@ struct NutritionHeaderView: View {
                         Button(action: {
                             // Edit action
                         }) {
-                            Image(systemName: "pencil")
+                            Image(systemName: "camera")
                                 .font(.system(size: 16, weight: .medium))
                                 .frame(width: 30, height: 30)
                                 .padding(8)
@@ -58,8 +58,7 @@ struct NutritionHeaderView: View {
                         Button(action: {
                             // Menu action
                         }) {
-                            Image(systemName: "ellipsis")
-                                .rotationEffect(.degrees(90))
+                            Image(systemName: "pencil")
                                 .font(.system(size: 16, weight: .medium))
                                 .frame(width: 30, height: 30)
                                 .padding(8)

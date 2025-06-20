@@ -10,6 +10,8 @@ import SwiftUI
 struct NutritionContentView: View {
     @Binding var isExpanded: Bool
     @Binding var offset: CGFloat
+    @State private var selectedMeal: MealType = .breakfast
+
 
     let collapsedOffset: CGFloat = 197
     let expandedOffset: CGFloat = 130
@@ -24,7 +26,7 @@ struct NutritionContentView: View {
                     .ignoresSafeArea(edges: .bottom)
 
                 ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
+                    VStack(spacing: 15) {
                         // Invisible reader at top to detect scroll movement
                         GeometryReader { proxy in
                             let y = proxy.frame(in: .named("scroll")).minY
@@ -67,6 +69,9 @@ struct NutritionContentView: View {
                             MacroSummaryStack(protein: 125, carbs: 220, fats: 45)
                         }
                         .padding(.horizontal, 15)
+                        
+                        // Meal Selector
+                        MealSelectionView(selectedMeal: $selectedMeal)
 
                         // Placeholder additional content
                         ForEach(0..<8, id: \.self) { _ in
