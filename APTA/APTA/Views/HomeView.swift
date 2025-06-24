@@ -35,7 +35,7 @@ struct HomeView: View {
             .ignoresSafeArea()
 
             // Sliding white content panel (as component)
-            HomeContentSheet(isExpanded: $isExpanded, offset: $offset)
+            HomeContentView(isExpanded: $isExpanded, offset: $offset)
         }
         .onAppear {
             guard selectedDate == nil else { return }

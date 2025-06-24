@@ -46,13 +46,21 @@ struct HomeHeaderView: View {
 
                 // Centered Greeting
                 VStack(spacing: 4) {
-                    Text("Welcome")
-                        .foregroundStyle(Color(.systemGray2))
-
                     Text("\(username)")
                         .multilineTextAlignment(.center)
                         .font(.headline)
                         .fontWeight(.light)
+                    
+                    HStack {
+                        Image(systemName: "medal.star")
+                            .foregroundStyle(.yellow)
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(.yellow)
+                        
+                        Text("Lvl. 37")
+                            .foregroundStyle(Color(.systemGray))
+                    }
                 }
                 .padding(.top, 13)
         }

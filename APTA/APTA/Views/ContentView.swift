@@ -17,7 +17,7 @@ struct ContentView: View {
                     case 0: HomeView()
                     case 1: NutritionView()
                     case 2: CommunityView()
-                    case 4: ChallengesView()
+                    case 3: ChallengesView()
                     default: HomeView()
                     }
                 }
